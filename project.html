@@ -85,7 +85,16 @@
             const urlParams = new URLSearchParams(window.location.search);
             const project = urlParams.get('project');
             if (project) {
-                document.getElementById('projectFrame').src = "p/" + project + ".html";
+                const iframe = document.getElementById('projectFrame');
+                const parentDocument = window.document;
+
+                // Listen for the scroll event on the iframe
+                iframe.addEventListener('scroll', function() {
+                    // Set the scroll position of the parent document to match the iframe
+                    parentDocument.documentElement.scrollTop = iframe.scrollTop;
+                });
+
+                iframe.src = "p/" + project + ".html";
                 console.log("Loading project: " + "/p/" + project + ".html");
             }
         }
