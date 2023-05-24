@@ -85,7 +85,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const project = urlParams.get('project');
             if (project) {
-                iframe.src = "p/" + project + ".html";
+                document.getElementById('projectFrame').src = "p/" + project + ".html";
                 console.log("Loading project: " + "/p/" + project + ".html");
             }
         }
