@@ -1,54 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Franklin small portfolio</title>
+    <title>Your Name</title>
     <style>
+        :root {
+            --main-bg-light: #f8f9fa;
+            --main-bg-dark: #343a40;
+            --text-color-light: #343a40;
+            --text-color-dark: #f8f9fa;
+            --accent-color: #007bff;
+            --box-bg-light: #ffffff;
+            --box-bg-dark: #495057;
+        }
+        [data-theme="light"] {
+            background-color: var(--main-bg-light);
+            color: var(--text-color-light);
+        }
+        [data-theme="dark"] {
+            background-color: var(--main-bg-dark);
+            color: var(--text-color-dark);
+        }
         body {
             font-family: Arial, sans-serif;
         }
-
         .container {
-            width: 80%;
-            margin: auto;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+        }
+        .description {
             text-align: center;
+            padding: 20px;
         }
-
         .projects {
-            list-style: none;
-            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
-
-        .projects li {
-            margin: 1em 0;
+        .project {
+            width: 45%;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: var(--box-bg-light);
+            transition: transform 0.3s ease-in-out;
+        }
+        [data-theme="dark"] .project {
+            background-color: var(--box-bg-dark);
+            border-color: var(--box-bg-dark);
+        }
+        .project:hover {
+            transform: scale(1.05);
+            border-color: #495057;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        /* Dark mode switch */
+        .dark-mode-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            border-top: 1px solid #ced4da;
         }
     </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z00L48KC14"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z00L48KC14');
-</script>
 <body>
     <div class="container">
-        <h1>Welcome to My GitHub Page</h1>
-        <p>
-            Hello! I am Franklin Tranié, a computer science student. Welcome to my GitHub page where you can find some of my work (if updated).
-        </p>
-
-        <h2>Projects</h2>
-        <ul class="projects">
-            <li>
-                <h3>VHDL CheatSheet</h3>
-                <a href="https://franklintra.github.io/vhdl-cheatsheet.html" target="_blank">Go to Project</a>
-            </li>
-            <!-- You can add more project list items here -->
-        </ul>
+        <div class="description">
+            <h1>Portfolio</h1>
+            <p>Hello! I am Franklin Tranié, a computer science student. Welcome to my GitHub page where you can find some of my work (if updated).</p>
+        </div>
+        <!-- Dark mode switch -->
+        <div class="dark-mode-switch">
+            <label class="switch">
+                <input type="checkbox" id="darkMode">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="projects">
+            <div class="project">
+                <h2>VHDL cheatsheet</h2>
+                <p>This is a small vhdl cheatsheet made for the DSD course in first year at EPFL</p>
+                <a href="project.html?project=vhdl-cheatsheet">See more</a>
+            </div>
+            <div class="project">
+                <h2>Rogue-like game</h2>
+                <p>RoguEPFL is a video game made as a first semester student project. It is a small game with intent to play a randomly generated map.</p>
+                <a href="https://github.com/franklintra/RoguEPFL">See more</a>
+            </div>
+            <!-- Add more projects here -->
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <p>Find me on <a href="https://github.com/franklintra">GitHub</a>, <a href="https://www.linkedin.com/in/franklin-tranié-793397252/">LinkedIn</a>, <a href="https://twitter.com/FDevlopper">Twitter</a></p>
+        </div>
     </div>
+    <script>
+        const checkbox = document.getElementById('darkMode');
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>

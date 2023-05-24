@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Page</title>
+    <style>
+        :root {
+            --main-bg-light: #f8f9fa;
+            --text-color-light: #343a40;
+            --accent-color: #007bff;
+            --box-bg-light: #ffffff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--main-bg-light);
+            color: var(--text-color-light);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+        }
+        /* Back button */
+        .back-btn {
+            display: inline-block;
+            color: var(--text-color-light);
+            background-color: var(--accent-color);
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            border-top: 1px solid #ced4da;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back to main menu button -->
+        <a href="index.html" class="back-btn">Back to Main Menu</a>
+
+        <!-- Include the project page in an iframe -->
+        <iframe id="projectFrame"></iframe>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Find me on <a href="https://github.com/franklintra">GitHub</a>, <a href="https://www.linkedin.com/in/franklin-tranié-793397252/">LinkedIn</a>, <a href="https://twitter.com/FDevlopper">Twitter</a></p>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const project = urlParams.get('project');
+            if (project) {
+                document.getElementById('projectFrame').src = "p/" + project + ".html";
+                console.log("Loading project: " + "/p/" + project + ".html");
+            }
+        }
+    </script>
+</body>
+</html>
