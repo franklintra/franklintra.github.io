@@ -7,9 +7,14 @@
     <style>
         :root {
             --main-bg-light: #f8f9fa;
+            --main-bg-dark: #343a40;
             --text-color-light: #343a40;
+            --text-color-dark: #f8f9fa;
             --accent-color: #007bff;
             --box-bg-light: #ffffff;
+            --box-bg-dark: #495057;
+            --menu-button-color-light: #343a40;
+            --menu-button-color-dark: #f8f9fa;
         }
         body {
             font-family: Arial, sans-serif;
@@ -21,21 +26,6 @@
             margin: 0 auto;
             padding: 10px;
             position: relative;
-        }
-        /* Back button */
-        .back-btn {
-            display: inline-block;
-            color: var(--text-color-light);
-            background-color: var(--accent-color);
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            margin-bottom: 20px;
-        }
-        .back-btn:hover {
-            background-color: #0056b3;
         }
         /* Footer */
         .footer {
@@ -57,6 +47,109 @@
             border: none;
             overflow: auto;
         }
+        .navbar {
+            max-width: 800;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .nav-tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            
+        }
+
+        .nav-tabs li {
+            margin-top : 2px;
+            margin-bottom : 2px;
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 10px 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, background 0.2s ease-in-out, border 0.2s ease-in-out;
+            box-sizing: border-box;
+            background-color: var(--box-bg-light);
+            border: 1px solid var(--box-bg-light);
+        }
+
+        .nav-tabs li a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .nav-tabs li:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color); /* Change border color to blue on hover */
+            transform: scale(1.1);
+        }
+
+        .menu-button.change .menu-button-bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        .menu-button.change .menu-button-bar:nth-child(2) {
+        opacity: 0;
+        }
+
+        .menu-button.change .menu-button-bar:nth-child(3) {
+        transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+
+        .nav-tabs li:hover a {
+            color: var(--text-color-dark);
+        }
+        .menu-button {
+                display: none;
+                cursor: pointer;
+                background: none;
+                border: none;
+                outline: none;
+            }
+        .menu-button-bar {
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 4px auto;
+            transition: all 0.3s;
+            background-color: var(--menu-button-color-light);
+        }
+
+        .navbar-content {
+            display: flex;
+            flex-direction: column;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: var(--main-bg-light);
+        }
+        @media screen and (max-width: 600px) {
+            .menu-button {
+                display: block;
+            }
+            .navbar-content.show .nav-tabs,
+            .navbar-content.show {
+                display: block;
+            }
+        }
+
+        @media screen and (min-width: 601px) {
+            .navbar {
+                flex-direction: row;
+            }
+            .nav-tabs {
+                display: flex;
+            }
+            .navbar-content {
+                max-height: none;
+            }
+        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -70,15 +163,22 @@
 </script>
 <body>
     <div class="container">
-        <!-- Back to main menu button -->
-        <a href="index.html" class="back-btn">Back to Main Menu</a>
+        <!-- Navbar -->
+        <div class="navbar">
+            <button class="menu-button">
+                <span class="menu-button-bar"></span>
+                <span class="menu-button-bar"></span>
+                <span class="menu-button-bar"></span>
+            </button>
+            <div class="navbar-content">
+                <ul class="nav-tabs"></ul>
+            </div>
+        </div>             
 
         <!-- Include the project page in an iframe -->
         <iframe id="projectFrame">Browser unsuported</iframe>
         <!-- Footer -->
-        <div class="footer">
-            <p>Find me on <a href="https://github.com/franklintra">GitHub</a>, <a href="https://www.linkedin.com/in/franklin-tranié-793397252/">LinkedIn</a>, <a href="https://twitter.com/FDevlopper">Twitter</a></p>
-        </div>
+        <div class="footer"><p>Find me on </p></div>
     </div>
     <script>
         window.onload = function() {
@@ -89,6 +189,65 @@
                 console.log("Loading project: " + "/p/" + project + ".html");
             }
         }
+    </script>
+    <script>
+        fetch('../assets/footer_links.json')
+            .then(response => response.json())
+            .then(links => {
+                const footerP = document.querySelector('.footer p');
+        
+                links.forEach((link, index) => {
+                    const anchor = document.createElement('a');
+                    anchor.href = link.link;
+                    anchor.textContent = link.name;
+                    
+                    footerP.appendChild(anchor);
+                    
+                    // Add comma after link if it's not the last link
+                    if (index !== links.length - 1) {
+                        footerP.appendChild(document.createTextNode(', '));
+                    }
+                });
+            })
+            .catch(error => console.log('Error:', error));
+    </script>
+    <!-- Load the menu button -->
+    <script>
+        document.querySelector(".menu-button").addEventListener("click", function() {
+        this.classList.toggle("change");
+        let navbarContent = document.querySelector(".navbar-content");
+        navbarContent.classList.toggle("show");
+
+        // Dynamically change max-height
+        if (navbarContent.style.maxHeight) {
+            navbarContent.style.maxHeight = null;
+        } else {
+            navbarContent.style.maxHeight = navbarContent.scrollHeight + "px";
+        }
+
+        const navbar = document.querySelector(".navbar");
+    });
+    </script>
+
+    <script>
+        fetch('../assets/tabs.json')
+            .then(response => response.json())
+            .then(tabs => {
+                const tabsUl = document.querySelector('.nav-tabs');
+
+                tabs.forEach(tab => {
+                    console.log(tab);
+                    const li = document.createElement('li');
+                    const anchor = document.createElement('a');
+
+                    anchor.href = tab.link;
+                    anchor.textContent = tab.name;
+
+                    li.appendChild(anchor);
+                    tabsUl.appendChild(li);
+                });
+            })
+            .catch(error => console.log('Error:', error));
     </script>
 </body>
 </html>
