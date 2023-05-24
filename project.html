@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 95vh;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,8 +40,8 @@
         /* Footer */
         .footer {
             text-align: center;
-            padding: 20px 0;
             margin-top: 20px;
+            margin-bottom: 0px;
             border-top: 1px solid #ced4da;
         }
         a {
@@ -53,8 +53,9 @@
         }
         iframe {
             width: 100%;
-            height: 800px;
+            height: calc(100vh - 180px);
             border: none;
+            overflow: auto;
         }
     </style>
 </head>
@@ -73,8 +74,7 @@
         <a href="index.html" class="back-btn">Back to Main Menu</a>
 
         <!-- Include the project page in an iframe -->
-        <iframe id="projectFrame"></iframe>
-
+        <iframe id="projectFrame">Browser unsuported</iframe>
         <!-- Footer -->
         <div class="footer">
             <p>Find me on <a href="https://github.com/franklintra">GitHub</a>, <a href="https://www.linkedin.com/in/franklin-tranié-793397252/">LinkedIn</a>, <a href="https://twitter.com/FDevlopper">Twitter</a></p>
@@ -85,21 +85,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const project = urlParams.get('project');
             if (project) {
-                const iframe = document.getElementById('projectFrame');
-                const parentDocument = window.document;
-
-                // Function to sync the scroll position
-                function syncScroll() {
-                    // Set the scroll position of the parent document to match the iframe
-                    parentDocument.documentElement.scrollTop = iframe.scrollTop;
-                }
-
-                // Listen for the scroll event on the iframe
-                iframe.addEventListener('scroll', syncScroll);
-
-                // Listen for the touchmove event on the iframe
-                iframe.addEventListener('touchmove', syncScroll);
-
                 iframe.src = "p/" + project + ".html";
                 console.log("Loading project: " + "/p/" + project + ".html");
             }
