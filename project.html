@@ -88,11 +88,17 @@
                 const iframe = document.getElementById('projectFrame');
                 const parentDocument = window.document;
 
-                // Listen for the scroll event on the iframe
-                iframe.addEventListener('scroll', function() {
+                // Function to sync the scroll position
+                function syncScroll() {
                     // Set the scroll position of the parent document to match the iframe
                     parentDocument.documentElement.scrollTop = iframe.scrollTop;
-                });
+                }
+
+                // Listen for the scroll event on the iframe
+                iframe.addEventListener('scroll', syncScroll);
+
+                // Listen for the touchmove event on the iframe
+                iframe.addEventListener('touchmove', syncScroll);
 
                 iframe.src = "p/" + project + ".html";
                 console.log("Loading project: " + "/p/" + project + ".html");
