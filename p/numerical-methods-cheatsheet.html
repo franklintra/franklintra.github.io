@@ -2357,8 +2357,7 @@ b <span class="token operator">=</span> np<span class="token punctuation">.</spa
 
 Q<span class="token punctuation">,</span> R <span class="token operator">=</span> la<span class="token punctuation">.</span>qr<span class="token punctuation">(</span>A<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'economic'</span><span class="token punctuation">)</span>
 x <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>solve<span class="token punctuation">(</span>R<span class="token punctuation">,</span> Q<span class="token punctuation">.</span>T @ b<span class="token punctuation">)</span>
-
-<span class="token comment"># this doesn't actually work : to fix</span></code></pre>
+</code></pre>
 <hr>
 <h3 class="atx" id="3-least-square-systems">3. Least Square Systems</h3>
 <ul>
@@ -2369,13 +2368,6 @@ x <span class="token operator">=</span> np<span class="token punctuation">.</spa
 b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 x <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>solve<span class="token punctuation">(</span>A<span class="token punctuation">.</span>T @ A<span class="token punctuation">,</span> A<span class="token punctuation">.</span>T @ b<span class="token punctuation">)</span></code></pre>
-</li>
-<li><p><strong>Using QR Factorization:</strong></p>
-<p><strong>Math Behind:</strong>
-Decompose ( A ) into ( Q ) and ( R ). The solution to the least squares problem is:</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"></span><span aria-hidden="true" class="katex-html"><span class="base"><span style="height:0.6833em;" class="strut"></span><span style="margin-right:0.00773em;" class="mord mathnormal">R</span><span class="mord mathnormal">x</span><span style="margin-right:0.2778em;" class="mspace"></span><span class="mrel">=</span><span style="margin-right:0.2778em;" class="mspace"></span></span><span class="base"><span style="height:1.0858em;vertical-align:-0.1944em;" class="strut"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8913em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right:0.13889em;" class="mord mathnormal mtight">T</span></span></span></span></span></span></span></span><span class="mord mathnormal">b</span></span></span></span></span><p><strong>Code Example:</strong></p>
-<pre><code class="fenced-code-block language-python">Q<span class="token punctuation">,</span> R <span class="token operator">=</span> la<span class="token punctuation">.</span>qr<span class="token punctuation">(</span>A<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'economic'</span><span class="token punctuation">)</span>
-x <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>solve<span class="token punctuation">(</span>R<span class="token punctuation">,</span> Q<span class="token punctuation">.</span>T @ b<span class="token punctuation">)</span></code></pre>
 </li>
 <li><p><strong>Using LU Factorization:</strong></p>
 <p><strong>Math Behind:</strong>
@@ -2388,9 +2380,6 @@ LU<span class="token punctuation">,</span> piv <span class="token operator">=</s
 x <span class="token operator">=</span> la<span class="token punctuation">.</span>lu_solve<span class="token punctuation">(</span><span class="token punctuation">(</span>LU<span class="token punctuation">,</span> piv<span class="token punctuation">)</span><span class="token punctuation">,</span> ATb<span class="token punctuation">)</span></code></pre>
 </li>
 </ul>
-<hr>
-<p>I apologize for the oversight. Here's the inclusion of the Vandermonde matrix for polynomial regression in the cheat sheet:</p>
-<hr>
 <hr>
 <h4 class="atx" id="41-perfect-polynomial-regression">4.1. Perfect Polynomial Regression</h4>
 <p><strong>Math Behind:</strong></p>
