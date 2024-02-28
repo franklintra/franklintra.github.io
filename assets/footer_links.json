@@ -5,10 +5,18 @@
     },
     {
         "name": "LinkedIn",
-        "link": "https://www.linkedin.com/in/franklin-tranié-793397252/"
+        "link": "https://www.linkedin.com/in/franklin-tranie-793397252/"
     },
     {
-        "name": "Twitter",
+        "name": "Twitter ML News",
         "link": "https://twitter.com/franklintrn"
-    }
+    },
+    {
+        "name": "Link Tree",
+        "link": "https://linktr.ee/franklintra"
+    },
+    {
+        "name": "EPFL",
+        "link": "https://people.epfl.ch/franklin.tranie"
+    },
 ]
