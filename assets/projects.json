@@ -1,13 +1,18 @@
 [
     {
+        "title": "Mistral - Hugging Face - EF Hack Paris - Encrypted ML Pipeline",
+        "description": "Developed a fully automated pipeline for converting ML models to an end-to-end encrypted equivalent using Zama and homomorphic encryption, securing 3rd place at the LLM Hack in Paris/Saclay.",
+        "link": "https://www.linkedin.com/posts/franklin-tranie_llmhackparis-activity-7189970886915993600-XXoP?utm_source=share&utm_medium=member_desktop"
+    },
+    {
+        "title": "Sybil - Cancer Prediction Model",
+        "description": "Currently working at CSAIL on Sybil, a machine learning model that uses computer vision on low-dose CT scans to predict future cancers up to 5 years in advance.",
+        "link": "https://ascopubs.org/doi/10.1200/JCO.22.01345"
+    },
+    {
         "title": "Javions",
         "description": "This is my biggest project yet: It is an ADS-B messages decoder and visualizer. It is a work in progress and will be released soon. (Java)",
         "link": "https://github.com/franklintra/Javions"
-    },
-    {
-        "title": "VHDL cheatsheet",
-        "description": "This is a small vhdl cheatsheet made for the DSD course in first year at EPFL",
-        "link": "project.html?project=vhdl-cheatsheet"
     },
     {
         "title": "Logisim lab session (logic counter)",
@@ -28,5 +33,10 @@
         "title": "Numerical methods cheatsheet",
         "description": "This is a cheat sheet to solve linear systems and do polynomial regression in python.",
         "link": "https://franklintra.github.io/project.html?project=numerical-methods-cheatsheet"
+    },
+    {
+        "title": "VHDL cheatsheet",
+        "description": "This is a small vhdl cheatsheet made for the DSD course in first year at EPFL",
+        "link": "project.html?project=vhdl-cheatsheet"
     }
 ]
